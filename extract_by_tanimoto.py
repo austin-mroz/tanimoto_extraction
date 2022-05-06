@@ -3,10 +3,12 @@ from rdkit.Chem import Draw
 from rdkit.Chem.rdMolDescriptors import GetMorganFingerprint
 from rdkit.SimDivFilters.rdSimDivPickers import MaxMinPicker
 
+import sys
 from utilities import load_smiles_list, tanimoto_sim, gen_rdmols
 
+
 # load your smiles data
-smiles_path = '/path/to/your/list/of/smiles/system_set.csv'
+smiles_path = sys.argv[1] # '/path/to/your/list/of/smiles/system_set.csv'
 smiles_list = load_smiles_list(smiles_path)
 
 # convert your smiles to rdkit molecule objects
@@ -17,7 +19,7 @@ fps = [GetMorganFingerprint(x,3) for x in rdmols] # list of fingerprints
 nfps = len(fps) # total number of fingerprints
 
 # this is the money line -- this function extracts the top num2extract candidates
-num2extract = 23
+num2extract = int(sys.argv[2])
 dmat_ids=tanimoto_sim(fps,num2extract)
 
 # save subset as an image

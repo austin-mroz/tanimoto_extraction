@@ -14,3 +14,12 @@ To run this extraction, follow these steps:
       > <code>conda install -c rdkit rdkit</code>
   5. Clone the repository
       > <code>git clone https://github.com/austin-mroz/tanimoto_extraction/ </code>
+
+  6. Run the extraction code by
+      > <code>python extract_by_tanimoto.py /path/to/csv/smiles.txt num2extract </code>
+
+      > Where <code>/path/to/csv/smiles.txt</code> is the path to your text file containing the smiles strings
+      > and <code>num2extract</code> is the number of molecular systems you want to extract from your bulk dataset
+      
+      > For example, (to run the example script)
+      > <code>python extract_by_tanimoto.py example/example_chem_set.csv 23</code>

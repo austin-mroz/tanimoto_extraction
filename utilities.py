@@ -10,7 +10,7 @@ from rdkit import Chem
 from rdkit.Chem import AllChem, Draw
 from tqdm import tqdm
 from rdkit import SimDivFilters
-import numpy as np
+import numpy
 
 def load_smiles_list(filename):
     smiles = pd.read_csv(filename, header=None)
@@ -28,5 +28,5 @@ def tanimoto_sim(fps,ntopick):
     for i in range(1,len(fps)):
          ds.extend(DataStructs.BulkTanimotoSimilarity(fps[i],fps[:i],returnDistance=True))
     mmp =SimDivFilters.MaxMinPicker()
-    ids=mmp.Pick(np.array(ds),len(fps),ntopick)
+    ids=mmp.Pick(numpy.array(ds),len(fps),ntopick)
     return ids
